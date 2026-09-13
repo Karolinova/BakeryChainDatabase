@@ -41,10 +41,33 @@ Each store has seven records in this table, one for each day of the week.
 | description | text field, maximum 500 characters |
 | category | text field defining the type of bakery product, "NOT NULL" |
 | unit_of_measure | text field defining the basic sales unit of the product, "NOT NULL" |
-| baker | text field, maximum 30 characters |
 | recipe_creation_date | date when the recipe was created |
-| author | text field, maximum 30 characters |
-| created_at | date and time when the record was added to the database, automatically added when the record is created |
+| status| text field defining the current product status, "NOT NULL"|
+
+## Table: Product_Authors
+
+| Column            | Specification                                                        |
+| :---------------- | :------------------------------------------------------------------- |
+| employee_id       | positive integer, "NOT NULL", references the "Employees" table       |
+| bakery_product_id | positive integer, "NOT NULL", references the "Bakery_Products" table |
+
+The table links bakery products with their authors.
+
+A bakery product can have multiple authors, and an employee can be the author of multiple bakery products.
+
+The combination of `employee_id` and `bakery_product_id` is unique and forms a composite primary key.
+
+## Table: Product_Prices
+
+| Column            | Specification                                                        |
+| :---------------- | :------------------------------------------------------------------- |
+| id                | positive integer, unique, "NOT NULL"                                 |
+| bakery_product_id | positive integer, "NOT NULL", references the "Bakery_Products" table |
+| price             | decimal number with two decimal places, "NOT NULL"                   |
+| valid_from        | date when the price becomes valid, "NOT NULL"                        |
+| valid_to          | date when the price stops being valid                                |
+
+The table stores current and historical prices of bakery products.
 
 ## Table: Transactions
 
