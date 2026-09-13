@@ -1,4 +1,4 @@
-# Initial Database Tables
+# Database Tables
 
 This file contains the database tables for the bakery chain project.
 
@@ -6,6 +6,7 @@ The tables were created and extended during the database design process.
 They will be reviewed and normalized in the next stage of the project.
 
 ## Table: Stores
+
 | Column | Specification |
 | :--- | :--- |
 | id | positive integer, unique, "NOT NULL" |
@@ -13,6 +14,23 @@ They will be reviewed and normalized in the next stage of the project.
 | building_number | text field, maximum 5 characters, "NOT NULL" |
 | postal_code | text field, format "XX-XXX", "NOT NULL" |
 | city | text field, maximum 30 characters, "NOT NULL" |
+| status          | text field defining the current store status, "NOT NULL" |
+| opening_date    | date when the store was opened                           |
+| suspension_date | date when the store was suspended                        |
+| closure_date    | date when the store was closed                           |
+| phone_number    | text field containing the store phone number             |
+
+## Table: Store_Opening_Hours
+
+| Column       | Specification                                               |
+| :----------- | :---------------------------------------------------------- |
+| id           | positive integer, unique, "NOT NULL"                        |
+| store_id     | positive integer, "NOT NULL", references the "Stores" table |
+| day_of_week  | value defining the day of the week, "NOT NULL"              |
+| opening_time | time when the store opens, "NOT NULL"                       |
+| closing_time | time when the store closes, "NOT NULL"                      |
+
+Each store has seven records in this table, one for each day of the week.
 
 ## Table: Bakery_products
 
