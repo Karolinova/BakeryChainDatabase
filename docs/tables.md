@@ -112,6 +112,45 @@ A cancellation can apply to selected items or to the whole document.
 | employment_start_date | date, "NOT NULL" |
 | contract_end_date | date, can be empty |
 | store_id | positive integer, "NOT NULL", references the "Stores" table |
+| email | text field containing the employee email address |
+| phone_number | text field containing the employee phone number |
+| employment_type | text field defining the type of employment, "NOT NULL" |
+| position_id | positive integer, "NOT NULL", references the "Positions" table |
+
+## Table: Positions
+
+| Column | Specification                                         |
+| :----- | :---------------------------------------------------- |
+| id     | positive integer, unique, "NOT NULL"                  |
+| name   | text field defining the employee position, "NOT NULL" |
+
+## Table: Employee_Audit
+
+| Column                | Specification                                                		      |
+| :-------------------- | :---------------------------------------------------------------------- |
+| id                    | positive integer, unique, "NOT NULL"                          	      |
+| employee_id           | positive integer, "NOT NULL", references the "Employees" table	      |
+| first_name            | text field, maximum 50 characters, "NOT NULL"               		      |
+| last_name             | text field, maximum 50 characters, "NOT NULL"               		      |
+| PESEL                 | text field, 11 characters, "NOT NULL"                      		      |
+| street                | text field, maximum 150 characters, "NOT NULL"              		      |
+| building_number       | text field, maximum 5 characters, "NOT NULL"               		      |
+| apartment_number      | text field, maximum 5 characters                           		      |
+| postal_code           | text field, format "XX-XXX", "NOT NULL"                    		      |
+| city                  | text field, maximum 30 characters, "NOT NULL"              		      |
+| employment_start_date | date, "NOT NULL"                                           		      |
+| contract_end_date     | date, can be empty                                         		      |
+| store_id              | positive integer, "NOT NULL", references the "Stores" table		      |
+| email                 | text field containing the employee email address          	          |
+| phone_number          | text field containing the employee phone number              		      |
+| employment_type       | text field defining the type of employment, "NOT NULL"         		  |
+| position_id           | positive integer, "NOT NULL", references the "Positions" table  		  |
+| valid_from            | date when this version of employee data became valid, "NOT NULL"  	  |
+| valid_to              | date when this version of employee data stopped being valid, "NOT NULL" |
+
+The table stores previous versions of employee data.
+
+The current data is stored in the "Employees" table. When employee data changes, the previous version is stored in this table together with the period when it was valid.
 
 ## Table: Product_Stock
 
