@@ -161,3 +161,25 @@ The current data is stored in the "Employees" table. When employee data changes,
 | store_id | positive integer, "NOT NULL", references the "Stores" table |
 | quantity_in_stock | decimal number, "NOT NULL" |
 | last_updated | date and time, "NOT NULL" |
+
+The combination of `bakery_product_id` and `store_id` is unique.
+
+This table stores the current stock level of a bakery product in a specific store.
+
+## Table: Product_Stock_History
+
+| Column           | Specification                                                      |
+| :--------------- | :----------------------------------------------------------------- |
+| id               | positive integer, unique, "NOT NULL"                               |
+| product_stock_id | positive integer, "NOT NULL", references the "Product_Stock" table |
+| quantity_before  | decimal number, "NOT NULL", cannot be negative                     |
+| quantity_change  | decimal number, cannot be 0, "NOT NULL"                            |
+| change_code      | text field, "NOT NULL", references the "Dictionary" table    		|
+| employee_id      | positive integer, "NOT NULL", references the "Employees" table     |
+| change_timestamp | date and time ("timestamp"), "NOT NULL"                            |
+
+Each stock change is stored as a separate event.
+
+The `quantity_after` value is not stored because it can be calculated from `quantity_before` and `quantity_change`.
+
+The history should remain consistent with the current data stored in `Product_Stock`.
