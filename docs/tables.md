@@ -183,3 +183,16 @@ Each stock change is stored as a separate event.
 The `quantity_after` value is not stored because it can be calculated from `quantity_before` and `quantity_change`.
 
 The history should remain consistent with the current data stored in `Product_Stock`.
+
+## Table: Dictionary
+
+| Column     | Specification                                            |
+| :--------- | :------------------------------------------------------- |
+| id         | positive integer, unique, "NOT NULL"                     |
+| group_code | code defining the group of dictionary values, "NOT NULL" |
+| code       | code identifying a specific dictionary value, "NOT NULL" |
+| name       | descriptive name of the dictionary value, "NOT NULL"     |
+
+The table contains dictionary values used in different parts of the database.
+
+The `group_code` identifies the group of values, while `code` identifies a specific value within the group.
