@@ -1,8 +1,8 @@
 # Initial Database Tables
 
-This file contains the initial database tables created for the bakery chain project.
+This file contains the database tables for the bakery chain project.
 
-The tables were created as part of the first database design exercise.
+The tables were created and extended during the database design process.
 They will be reviewed and normalized in the next stage of the project.
 
 ## Table: Stores
