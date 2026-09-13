@@ -14,7 +14,7 @@ They will be reviewed and normalized in the next stage of the project.
 | postal_code | text field, format "XX-XXX", "NOT NULL" |
 | city | text field, maximum 30 characters, "NOT NULL" |
 
-## Tabela: Bakery_products
+## Table: Bakery_products
 
 | Column | Specification |
 | :--- | :--- |
@@ -28,7 +28,7 @@ They will be reviewed and normalized in the next stage of the project.
 | author | text field, maximum 30 characters |
 | created_at | date and time when the record was added to the database, automatically added when the record is created |
 
-## Tabela: Transactions
+## Table: Transactions
 
 | Column | Specification |
 | :--- | :--- |
@@ -41,7 +41,7 @@ They will be reviewed and normalized in the next stage of the project.
 | bakery_product_id | positive integer, "NOT NULL", references the "Bakery_Products" table |
 | store_id | positive integer, "NOT NULL", references the "Stores" table |
 
-## Tabela: Employees
+## Table: Employees
 
 | Column | Specification |
 | :--- | :--- |
@@ -57,7 +57,7 @@ They will be reviewed and normalized in the next stage of the project.
 | contract_end_date | date, can be empty |
 | store_id | positive integer, "NOT NULL", references the "Stores" table |
 
-## Tabela: Product_Stock
+## Table: Product_Stock
 
 | Column | Specification |
 | :--- | :--- |
