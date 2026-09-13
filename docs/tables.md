@@ -78,9 +78,24 @@ The table stores current and historical prices of bakery products.
 | quantity | positive integer, "NOT NULL" |
 | document_type | text field, "NOT NULL" |
 | document_number | text field, maximum 15 characters, "NOT NULL" |
-| purchase_date | date and time ("timestamp"), "NOT NULL" |
+| purchase_timestamp | date and time ("timestamp"), "NOT NULL" |
 | bakery_product_id | positive integer, "NOT NULL", references the "Bakery_Products" table |
 | store_id | positive integer, "NOT NULL", references the "Stores" table |
+| employee_id | positive integer, "NOT NULL", references the "Employees" table |
+
+## Table: Transaction_Cancellations
+
+| Column                 | Specification                                                     |
+| :--------------------- | :---------------------------------------------------------------- |
+| id                     | positive integer, unique, "NOT NULL"                              |
+| transaction_id         | positive integer, "NOT NULL", references the "Transactions" table |
+| quantity               | positive number, "NOT NULL"                                       |
+| amount                 | decimal number with two decimal places, "NOT NULL"                |
+| cancellation_timestamp | date and time ("timestamp"), "NOT NULL"                           |
+
+The table stores information about cancelled transaction items.
+
+A cancellation can apply to selected items or to the whole document.
 
 ## Table: Employees
 
